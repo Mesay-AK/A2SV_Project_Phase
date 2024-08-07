@@ -34,11 +34,11 @@ To set up and run the Library Management System, follow these steps:
 It is a console based program that provides differnt options to provide functionalities. These options are:
 	
         1.  Add Book
-	  2.  Remove Book
+	   2.  Remove Book
         3.  List Available Books
         4.  Borrow Book
         5.  Return Book
-	  6.  List of borrowed books by a member
+	   6.  List of borrowed books by a member
         7.  Exit 
 
 #### *These usages are implemented using the following methods:*
