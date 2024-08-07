@@ -36,8 +36,8 @@ func (Lib *Library)RemoveBook(bookID int)error{
 	if len(Lib.BookList) > 0{
 		_, book := Lib.BookList[bookID]
 		if book {
-				delete(Lib.BookList, bookID)
-				return nil
+			delete(Lib.BookList, bookID)
+			return nil
 		}
 
 	}
@@ -47,12 +47,12 @@ func (Lib *Library)RemoveBook(bookID int)error{
 func (Lib *Library)BorrowBook(bookID int, memberID int)error{
 
 	if Lib.checkExistance(bookID, memberID){
-			book:= Lib.BookList[bookID]
-			member:= Lib.MemberList[memberID]
+		book:= Lib.BookList[bookID]
+		member:= Lib.MemberList[memberID]
 
 	// Checking the availability of the book (Available or borrowed)
 	if book.Status != "Available" {
-	 return fmt.Errorf("book with ID %d is not available", bookID)
+	 	return fmt.Errorf("book with ID %d is not available", bookID)
 	 
 }
 
@@ -62,7 +62,7 @@ func (Lib *Library)BorrowBook(bookID int, memberID int)error{
 
 	// Adding book to member's borrowed list
 	member.BorrowedBooks = append(member.BorrowedBooks, book)
-	// Lib.MemberList[memberID] = member
+	Lib.MemberList[memberID] = member
 
 
 	}else{
@@ -88,7 +88,7 @@ func (Lib *Library)ReturnBook(bookID int, memberID int)error{
 		}
 
 		if index != -1{
-				return fmt.Errorf("book with ID %d is not borrowed by member %d", bookID, memberID)
+			return fmt.Errorf("book with ID %d is not borrowed by member %d", bookID, memberID)
 				
 		}
 		book.Status = "Available"
@@ -125,9 +125,9 @@ func (Lib *Library)ListAvailableBooks() []models.Book{
 func (Lib *Library)ListBorrowedBooks(memberID int) []models.Book{
 
 	// Returning the list of borrowed books
-		member := Lib.MemberList[memberID]
+	member := Lib.MemberList[memberID]
 
-		return member.BorrowedBooks
+	return member.BorrowedBooks
 
 }
 
