@@ -36,8 +36,8 @@ func (Lib *Library)RemoveBook(bookID int)error{
 	if len(Lib.BookList) > 0{
 		_, book := Lib.BookList[bookID]
 		if book {
-			delete(Lib.BookList, bookID)
-			return nil
+		delete(Lib.BookList, bookID)
+		return nil
 		}
 
 	}
