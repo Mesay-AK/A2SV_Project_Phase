@@ -10,7 +10,7 @@ To set up and run the Library Management System, follow these steps:
 
 1. ***Clone the repository:***
     ```sh
-    git clone https://github.com/yourusername/library_management.git
+    git clone https://github.com/Mesay-AK/A2SV_Project_Phase/tree/main/Task-3/library_management.git
     cd library_management
     ```
 
