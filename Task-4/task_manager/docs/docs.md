@@ -1,59 +1,87 @@
-# Task Manager Documentation
+# Task Manager API Documentation
 
-## Table of Contents
+## Add Task
+This endpoint adds a new task.
 
-1. [Introduction](#introduction)
-2. [installation](#installation)
-3. [Features](#features)
-4. [Usage](#usage)
-    - [Starting the Server](#starting-the-server)
-    - [API Endpoints](#api-endpoints)
+### Request
+The request should be sent via an HTTP POST method to http://localhost:8080/tasks.
+The request payload should have the following parameters in the raw request body type:
+  - id (string, optional): The ID of the task.
+  - title (string, optional): The title of the task.
+  - description (string, optional): The description of the task.
+  - status (string, optional): The status of the task.
 
-5. [Dependencies](#dependencies)
+### Response 
+Upon a successful execution, the endpoint returns a status code of 201 and a JSON response with a message "Task created".
+## Get Tasks
+This endpoint retrieves a list of tasks.
+
+### Request
+The request should be sent via an HTTP GET method to http://localhost:8080/tasks.
+
+### Response
+Upon a successful execution, the endpoint returns a status code of 200 and a JSON response with an array of tasks. Each task object in the array contains the following properties:
+  - id (string): The ID of the task.
+  - title (string): The title of the task.
+  - description (string): The description of the task.
+  - due_date (string): The due date of the task.
+  - status (string): The status of the task.
+
+### Possible Errors
+  - 500 Internal Server Error: If there is an issue on the server side.
+
+## Get Task by ID
+This endpoint retrieves a task with a specific id.
+
+### Request 
+The request should be sent via an HTTP GET method to http://localhost:8080/tasks/:id.
+
+### Response 
+Upon a successful execution, the endpoint returns a status code of 200 and a JSON response with a task of that ID.
+The task object contains the following properties:
+  - id (string): The ID of the task.
+  - title (string): The title of the task.
+  - description (string): The description of the task.
+  - due_date (string): The due date of the task.
+  - status (string): The status of the task.
+
+### Possible Errors
+  - 404 Not Found: If the task with the specified ID is not found.
+  - 500 Internal Server Error: If there is an issue on the server side.
 
 
-## Introduction
+### Possible Errors
+  - 400 Bad Request: If the request body is invalid.
+  - 500 Internal Server Error: If there is an issue on the server side.
 
-The **Task Manager** is a simple web-based application designed to manage tasks. It allows users to create, update, delete, and view tasks through a RESTful API. The application is built using the Go programming language and the Gin web framework.
+## Remove Task 
+This endpoint removes a task with a specific id.
 
-## Installation
+### Request 
+The request should be sent via an HTTP DELETE method to http://localhost:8080/tasks/:id.
 
-To install and run the Task Manager locally, follow these steps:
+### Response 
+Upon a successful execution, the endpoint returns a status code of 200 and a JSON response with a message "Task removed".
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/Mesay-AK/A2SV_Project_Phase/tree/main/Task-4/task_manager.git
-   ```
+### Possible Errors
+  - 404 Not Found: If the task with the specified ID is not found.
+  - 500 Internal Server Error: If there is an issue on the server side.
 
-2. **Navigate to the Project Directory**:
-    ```bash
-    cd task_manager
-    ```
-## Features
+## Update Task
+This endpoint updates a task of specific id.
 
-- **Create a Task**: Add a new task with a title, description, due date, and status.
-- **View Tasks**: Retrieve a list of all tasks or view details of a specific task by ID.
-- **Update a Task**: Modify the details of an existing task.
-- **Delete a Task**: Remove a task from the list by its ID.
+### Request 
+The request should be sent via an HTTP PUT method to http://localhost:8080/tasks/:id.
+The request payload should have one or more of the following parameters in the raw request body type:
+  - id (string, optional): The ID of the task.
+  - title (string, optional): The title of the task.
+  - description (string, optional): The description of the task.
+  - status (string, optional): The status of the task.
 
-## Usage
+### Response 
+Upon a successful execution, the endpoint returns a status code of 200 and a JSON response with a message "Task updated".
 
-### Starting the server Use :
-```bash 
-    ./task_manager
-```
-
-### Starting the server Use :
-
-Here is the list of available API endpoints:
-
-- **GET /tasks** : Retrieve all tasks.
-- **GET /tasks/:id** : Retrieve a specific task by ID.
-- **POST /tasks** : Create a new task.
-- **PUT /tasks/** : Update an existing task by ID.
-- **DELETE /tasks/** :Delete a task by ID.
-
-### Dependencies
-- ***Go***: The Go programming language.
-- ***Gin***: A web framework for Go.
-- ***log***: Standard logging package.
+### Possible Errors
+  - 400 Bad Request: If the request body is invalid.
+  - 404 Not Found: If the task with the specified ID is not found.
+  - 500 Internal Server Error: If there is an issue on the server side.
