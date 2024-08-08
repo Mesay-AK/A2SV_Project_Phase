@@ -22,7 +22,7 @@ To install and run the Task Manager locally, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Mesay-AK/task_manager.git
+   git clone https://github.com/Mesay-AK/A2SV_Project_Phase/tree/main/Task-4/task_manager.git
    ```
 
 2. **Navigate to the Project Directory**:
