@@ -10,7 +10,7 @@ import(
 
 func main(){
 
-	// Seting up the database
+	// Setting up the database
 	db, err := database.InitDataBase("mongodb://localhost:27017", "TaskDB")
 	if err != nil {
 		log.Fatalf("Failed to initialize database: %v", err)
@@ -19,7 +19,7 @@ func main(){
 	taskService := data.NewTaskService(db)
 	taskController := controllers.NewTaskController(taskService)
 
-	// Seting up the router
+	// Setting up the router
 	Router := router.SetRouter(taskController)
 	if err := Router.Run(":8080"); err != nil {
 
